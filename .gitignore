@@ -1,0 +1,17 @@
+# Exclude compiled binary files and libraries
+bin/
+include/
+lib/
+share/
+
+# Ignore virtual environment files
+pyvenv.cfg
+
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore system files (Mac/Linux)
+.DS_Store
