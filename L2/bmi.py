@@ -1,25 +1,18 @@
-import csv
-import numpy as np
-import matplotlib.pyplot as plt
 import pandas as pd
 
-plt.style.use('fivethirtyeight')
-plt.rc('figure', figsize=(5.0, 2.0))
+from heroes.reader import heroes_list
 
-# Open and read the file
-with open('heroes.csv', 'r') as heroes_file:
-    heroes_reader = csv.reader(heroes_file, delimiter=';', quotechar='"')
-    
-    # Convert reader to a list (excluding the header)
-    heroes = list(heroes_reader)
-    
-    # Create Series first appearance
-    weight = [float(h[5]) if h[5].strip() else None for h in heroes[1:]]
-    height = [float(h[4]) if h[4].strip() else None for h in heroes[1:]]
+# Extract years and names
+years = [int(h[7]) if h[7] else None for h in heroes_list[1:]]
+names = [h[0] for h in heroes_list[1:]]
 
-    weight = pd.Series(weight)
-    height = pd.Series(height)
+# Create Series first appearance
+weight = [float(h[5]) if h[5].strip() else None for h in heroes_list[1:]]
+height = [float(h[4]) if h[4].strip() else None for h in heroes_list[1:]]
 
-    bmi = weight / height.apply(lambda h: (h/100)**2)
+weight = pd.Series(weight)
+height = pd.Series(height)
 
-    print(bmi)
+bmi = weight / height.apply(lambda h: (h/100)**2)
+
+print(bmi)
