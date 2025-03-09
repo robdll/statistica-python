@@ -13,3 +13,13 @@ first_appearance = pd.Series(years, index=names)
 print(first_appearance['Ant-Man'])
 print(first_appearance.loc['Ant-Man'])
 print(first_appearance.iloc[-3])
+
+print('\n\nfirst_appearance[\'Amazo\':\'Ajax\']\n')
+print(first_appearance['Amazo':'Ajax'])
+
+print('\n\nfirst_appearance[60:63]\n')
+print(first_appearance[60:63])
+print('\n\nHEAD\n')
+print(first_appearance.head(7))
+
+
